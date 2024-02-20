@@ -33,3 +33,7 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# user-specific files
+.DS_Store
+*/.DS_Store
