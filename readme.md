@@ -43,8 +43,8 @@ ou
 npx react-native run-ios
 ```
 
-1. Connectez-vous à votre compte ou créez un nouveau compte si vous n'en avez pas encore.
-2. Explorez les différentes fonctionnalités de l'application, créez vos programmes d'entraînement, enregistrez vos séances et suivez votre progression.
+2. Connectez-vous à votre compte ou créez un nouveau compte si vous n'en avez pas encore.
+3. Explorez les différentes fonctionnalités de l'application, créez vos programmes d'entraînement, enregistrez vos séances et suivez votre progression.
 
 ## Contribution 
 
