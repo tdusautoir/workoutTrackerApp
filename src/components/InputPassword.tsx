@@ -1,6 +1,7 @@
-import { Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import Icon from 'react-native-vector-icons/Ionicons';
+import Eye from '../../assets/icons/eye.svg';
+import EyeOff from '../../assets/icons/eye-off.svg';
 
 const InputPassword = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -10,10 +11,10 @@ const InputPassword = () => {
             <TextInput secureTextEntry={!showPassword} keyboardType={'visible-password'} className='bg-gray-200 text-sm pl-4 pr-12 pt-2 pb-3 rounded-lg w-full' />
             <TouchableOpacity
                 onPress={() => setShowPassword((old) => !old)}
-                className='items-center justify-center px-2 absolute right-0 bg-gray-200 h-full'>
-                <Text>{showPassword ? <Icon name='eye' size={24} color='black' /> : <Icon name='eye-off' size={24} color='black' />}</Text>
+                className='items-center justify-center absolute right-0 bg-gray-200 h-full px-2'>
+                {!showPassword ? <EyeOff width={24} height={24} stroke={'black'} /> : <Eye width={24} height={24} stroke={'black'} />}
             </TouchableOpacity>
-        </View>
+        </View >
     )
 }
 
