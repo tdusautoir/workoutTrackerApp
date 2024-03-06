@@ -1,14 +1,14 @@
 import React from 'react'
 import AuthNavigator from './AuthNavigator';
-// import RootNavigator from './RootNavigator';
-import { useAuthContext } from '@/context/AuthContext';
+import RootNavigator from './RootNavigator';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Navigator() {
-    const { isSignedIn } = useAuthContext();
+    const { authState } = useAuth();
 
-    if (!isSignedIn) {
+    if (!authState.authenticated) {
         return <AuthNavigator />
     }
 
-    // return <RootNavigator />
+    return <RootNavigator />
 }

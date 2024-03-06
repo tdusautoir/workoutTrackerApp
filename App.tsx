@@ -1,11 +1,13 @@
-import { AuthContextProvider } from '@/context/AuthContext';
-import { StyleSheet } from 'react-native';
+import { AuthProvider } from '@/context/AuthContext';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Navigator from './src/navigation/Navigator';
 
 export default function App() {
   return (
-    <AuthContextProvider>
-      <Navigator />
-    </AuthContextProvider>
+    <QueryClientProvider client={(new QueryClient())}>
+      <AuthProvider>
+        <Navigator />
+      </AuthProvider>
+    </QueryClientProvider>
   );
 }
