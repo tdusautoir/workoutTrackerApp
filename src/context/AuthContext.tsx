@@ -2,15 +2,23 @@ import { createContext, useContext, useEffect, useState } from "react";
 import * as SecureStore from "expo-secure-store";
 
 type AuthProps = {
-    authState: { token: string | null; authenticated: boolean | null };
+    authState: {
+        token: string | null;
+        user: { id: number | null, email: string | null };
+        authenticated: boolean | null
+    };
     onRegister: (email: string, password: string) => Promise<any>;
     onLogin: (email: string, password: string) => Promise<any>;
     onLogout: () => Promise<any>;
 }
 
-const TOKEN_KEY = 'my-jwt';
+const TOKEN_KEY = 'user_payload';
 const AuthContext = createContext<AuthProps>({
-    authState: { token: null, authenticated: null },
+    authState: {
+        token: null,
+        user: { id: null, email: null },
+        authenticated: null
+    },
     onRegister: () => Promise.resolve({}),
     onLogin: () => Promise.resolve({}),
     onLogout: () => Promise.resolve({})
@@ -21,22 +29,23 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const [authState, setAuthState] = useState<{
-        token: string | null;
-        authenticated: boolean | null;
-    }>({
+    const [authState, setAuthState] = useState<AuthProps['authState']>({
         token: null,
-        authenticated: null
+        authenticated: null,
+        user: { id: null, email: null }
     });
 
     useEffect(() => {
         const loadToken = async () => {
             const token = await SecureStore.getItemAsync(TOKEN_KEY);
 
-            if (token) {
+            const parsedToken = token ? JSON.parse(token) : null;
+
+            if (parsedToken) {
                 setAuthState({
-                    token,
-                    authenticated: true
+                    token: parsedToken.token,
+                    authenticated: true,
+                    user: parsedToken.user
                 })
             }
         }
@@ -61,9 +70,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             setAuthState({
                 token: data.token,
                 authenticated: true,
+                user: data.user
             })
 
-            await SecureStore.setItemAsync(TOKEN_KEY, data.token);
+            await SecureStore.setItemAsync(TOKEN_KEY, JSON.stringify({ token: data.token, user: data.user }));
         } catch (e: any) {
             console.log(e);
             return { error: true, msg: e.response.data.ms }
@@ -84,7 +94,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
             setAuthState({
                 token: null,
-                authenticated: null
+                authenticated: null,
+                user: { id: null, email: null }
             })
         } catch (e: any) {
             return { error: true, msg: e.response.data.ms }

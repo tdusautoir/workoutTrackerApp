@@ -9,9 +9,11 @@ import LogoutIcon from '../../assets/icons/logout.svg';
 import DumbellIcon from '../../assets/icons/dumbell.svg';
 import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from '../../tailwind.config.js';
-import WorkoutScreen from '@/screens/WorkoutScreen';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { useAuth } from '@/context/AuthContext';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ProgramScreen from '@/screens/ProgramScreen';
+import AddProgramScreen from '@/screens/AddProgramScreen';
 
 const { theme } = resolveConfig(tailwindConfig) as TwTheme;
 
@@ -28,6 +30,21 @@ const LogoutComponent = () => {
         </TouchableOpacity>)
 }
 
+
+const HomeStack = createNativeStackNavigator();
+
+function HomeStackScreen() {
+    return (
+        <HomeStack.Navigator screenOptions={{
+            headerShown: false,
+        }}>
+            <HomeStack.Screen name={"Default"} component={HomeScreen} />
+            <HomeStack.Group screenOptions={{ presentation: 'modal' }}>
+                <HomeStack.Screen name={Routes.ADD_PROGRAM_SCREEN} component={AddProgramScreen} />
+            </HomeStack.Group>
+        </HomeStack.Navigator>
+    );
+}
 export default function RootNavigator() {
     const Tab = createBottomTabNavigator();
 
@@ -46,7 +63,7 @@ export default function RootNavigator() {
                         return <LayoutIcon stroke={color} />
                     }
 
-                    if (route.name === Routes.WORKOUT_SCREEN) {
+                    if (route.name === Routes.PROGRAM_SCREEN) {
                         return <DumbellIcon stroke={color} />
                     }
 
@@ -55,8 +72,8 @@ export default function RootNavigator() {
                 tabBarLabel: () => null,
             })}>
                 <Tab.Group>
-                    <Tab.Screen name={Routes.HOME_SCREEN} component={HomeScreen} />
-                    <Tab.Screen name={Routes.WORKOUT_SCREEN} component={WorkoutScreen} />
+                    <Tab.Screen name={Routes.HOME_SCREEN} component={HomeStackScreen} />
+                    <Tab.Screen name={Routes.PROGRAM_SCREEN} component={ProgramScreen} />
                     <Tab.Screen name="Logout" component={LogoutComponent} options={{
                         tabBarButton: (props) => (<LogoutComponent {...props} />),
                     }} />
