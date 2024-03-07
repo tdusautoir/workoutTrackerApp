@@ -37,16 +37,30 @@ EXPO_PUBLIC_API_URL="https://workout-tracker-api-thibaut-dusautoirs-projects.ver
 
 ## Utilisation
 
-1. Lancez l'application sur votre émulateur ou appareil mobile :
+1. Lancez l'application et choisissez votre émulateur :
+
+IOS :
 
 ```bash
-npx react-native run-android
+npm run ios
 ```
 
-ou 
+Android : 
 
 ```bash
-npx react-native run-ios
+npm run android
+```
+
+Web : 
+
+```bash
+npm run web
+```
+
+Ou choisissez ensuite : 
+
+```bash
+npm run start
 ```
 
 2. Connectez-vous à votre compte ou créez un nouveau compte si vous n'en avez pas encore.
