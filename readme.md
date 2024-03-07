@@ -3,11 +3,11 @@
 WorkoutTracker est une application mobile développée en React Native conçue pour aider les utilisateurs à suivre et à enregistrer leurs séances d'entraînement en musculation.
 
 ## Fonctionnalités
-- Authentification utilisateur : Les utilisateurs peuvent se connecter pour accéder à leurs programmes personnalisés.
-- Gestion des programmes : Les utilisateurs peuvent créer, modifier et supprimer leurs programmes d'entraînement.
-- Gestion des séances : Les utilisateurs peuvent voir les séances de leur programme, les éditer et enregistrer les détails de leur entraînement.
-- Gestion des exercices : Les utilisateurs peuvent consulter et modifier les exercices de chaque séance, enregistrer les poids, les répétitions et d'autres détails.
-- Suivi de la progression : Une fonctionnalité permet aux utilisateurs de visualiser leur progression au fil du temps.
+- [x] Authentification utilisateur : Les utilisateurs peuvent se connecter pour accéder à leurs programmes personnalisés. 
+- [ ] Gestion des programmes : Les utilisateurs peuvent créer, modifier et supprimer leurs programmes d'entraînement.
+- [ ] Gestion des séances : Les utilisateurs peuvent voir les séances de leur programme, les éditer et enregistrer les détails de leur entraînement. 
+- [ ] Gestion des exercices : Les utilisateurs peuvent consulter et modifier les exercices de chaque séance, enregistrer les poids, les répétitions et d'autres détails.
+- [ ] Suivi de la progression : Une fonctionnalité permet aux utilisateurs de visualiser leur progression au fil du temps.
 
 ## Installation
 
@@ -27,6 +27,12 @@ cd workout-tracker
 
 ```bash
 npm install
+```
+
+4. Remplir son .env via les variables inscrites dans le .env.example
+
+```env
+EXPO_PUBLIC_API_URL="https://workout-tracker-api-eight.vercel.app"
 ```
 
 ## Utilisation
