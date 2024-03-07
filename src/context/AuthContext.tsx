@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import * as SecureStore from "expo-secure-store";
-// import { API_URL } from "@env";
 
 type AuthProps = {
     authState: { token: string | null; authenticated: boolean | null };
@@ -44,26 +43,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         loadToken();
     }, [])
 
-    const register = async (email: string, password: string) => {
+    const fetchAuth = async ({ signin = false, password, email }: { signin: boolean, password: string, email: string }) => {
         try {
-            return await fetch(process.env.EXPO_PUBLIC_API_URL + '/users', {
+            const url = process.env.EXPO_PUBLIC_API_URL + '/auth' + (signin ? '/login' : '/register');
+            const result = await fetch(url, {
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 method: "POST",
                 body: JSON.stringify({ email, password })
             })
-        } catch (e: any) {
-
-        }
-    }
-
-    const login = async (email: string, password: string) => {
-        try {
-            const result = await fetch(process.env.EXPO_PUBLIC_API_URL + '/auth/login', {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({
-                    email: email, password
-                })
-            });
 
             const data = await result.json();
 
@@ -81,6 +68,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             console.log(e);
             return { error: true, msg: e.response.data.ms }
         }
+    }
+
+    const register = async (email: string, password: string) => {
+        return fetchAuth({ signin: false, password, email });
+    }
+
+    const login = async (email: string, password: string) => {
+        return fetchAuth({ signin: true, password, email });
     }
 
     const logout = async () => {

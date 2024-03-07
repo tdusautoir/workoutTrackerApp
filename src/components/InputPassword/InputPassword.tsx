@@ -1,7 +1,7 @@
 import { TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import Eye from '../../assets/icons/eye.svg';
-import EyeOff from '../../assets/icons/eye-off.svg';
+import Eye from '../../../assets/icons/eye.svg';
+import EyeOff from '../../../assets/icons/eye-off.svg';
 
 const InputPassword = ({ onUpdate }: { onUpdate: (text: string) => void }) => {
     const [showPassword, setShowPassword] = useState(false);
