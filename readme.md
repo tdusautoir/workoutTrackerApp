@@ -32,7 +32,7 @@ npm install
 4. Remplir son .env via les variables inscrites dans le .env.example
 
 ```env
-EXPO_PUBLIC_API_URL="https://workout-tracker-api-eight.vercel.app"
+EXPO_PUBLIC_API_URL="https://workout-tracker-api-thibaut-dusautoirs-projects.vercel.app"
 ```
 
 ## Utilisation
