@@ -6,6 +6,7 @@ import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from '../../tailwind.config.js';
 import Spinner from '@/components/Spinner/Spinner';
 import PlusSquareIcon from '../../assets/icons/plus-square.svg';
+import PlusIcon from '../../assets/icons/plus.svg';
 
 const { theme } = resolveConfig(tailwindConfig) as TwTheme;
 
@@ -22,7 +23,7 @@ export default function AddProgramScreen({ navigation }: { navigation: any }) {
                 'Accept': 'application/json',
                 'Authorization': 'Bearer ' + authState.token
             },
-            body: JSON.stringify({ name })
+            body: JSON.stringify({ name, workouts })
         });
         setLoading(false);
         const result = await res.json();
@@ -43,22 +44,57 @@ export default function AddProgramScreen({ navigation }: { navigation: any }) {
 
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState('');
+    const [workouts, setWorkouts] = useState<Array<string>>([]);
+
 
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
             <View className='p-12 gap-4'>
-                <Text className='text-4xl font-bold transition-all'>Ajouter un programme</Text>
+                <Text className='text-4xl font-bold'>Ajouter un programme</Text>
                 <View className='gap-y-2'>
                     <Text className='text-lg font-semibold'>Nom</Text>
-                    <TextInput onChangeText={(value) => setName(value)} keyboardType='email-address' className='bg-gray-200 text-sm px-4 pt-2 pb-3 rounded-lg' />
+                    <TextInput onChangeText={(value) => setName(value)} keyboardType='default' className='bg-gray-200 text-sm px-4 pt-2 pb-3 rounded-lg' />
                 </View>
+                <Text className='text-lg font-semibold'>Séances</Text>
+                {workouts.map((session, index) => (
+                    <View key={index} className='flex-row justify-between'>
+                        <TextInput
+                            key={index}
+                            placeholder={'Séance ' + (index + 1)}
+                            placeholderTextColor={theme.colors.gray[400]}
+                            keyboardType='default'
+                            className='bg-gray-200 text-sm px-4 pt-2 pb-3 rounded-lg flex-1 mr-2'
+                            onChangeText={(value) => {
+                                const newSessions = [...workouts];
+                                newSessions[index] = value;
+                                setWorkouts(newSessions);
+                            }} />
+                        <TouchableOpacity
+                            onPress={() => {
+                                const newSessions = [...workouts];
+                                newSessions.splice(index, 1);
+                                setWorkouts(newSessions);
+                            }}
+                            className='h-10 bg-gray-200 px-2 rounded-lg items-center justify-center'>
+                            <View className='rotate-45'><PlusIcon color={theme.colors.gray[900]} /></View>
+                        </TouchableOpacity>
+                    </View>
+                ))}
+                {workouts.length < 7 && <TouchableOpacity
+                    onPress={() => {
+                        if (workouts.length >= 7) return;
+                        setWorkouts((prev) => [...prev, 'Séance ' + (prev.length + 1)]);
+                    }}
+                    className={'flex-row h-10 bg-secondary gap-x-2 pl-4 rounded-lg pr-1 items-center justify-center'}>
+                    <Text className='font-semibold text-md text-primary'>Ajouter une Séance</Text>
+                    <PlusSquareIcon width={24} height={24} stroke={theme.colors.primary} />
+                </TouchableOpacity>}
                 <TouchableOpacity
                     onPress={() => addProgram()}
                     className={'flex-row h-10 bg-secondary gap-x-2 pl-4 rounded-lg pr-1 items-center justify-center' + (loading ? " pr-4" : "")}>
                     {!loading ?
                         <>
                             <Text className='font-semibold text-md text-primary'>Ajouter</Text>
-                            <PlusSquareIcon width={24} height={24} stroke={theme.colors.primary} />
                         </> : <Spinner width={24} height={24} stroke={theme.colors.primary} />
                     }
                 </TouchableOpacity>
