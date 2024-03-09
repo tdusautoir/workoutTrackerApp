@@ -12,7 +12,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         queryKey: ['workouts'],
         queryFn: async () => {
             const url = process.env.EXPO_PUBLIC_API_URL;
-            const response = await fetch(url + '/program', {
+            const response = await fetch(url + '/program/last', {
                 headers: { 'Authorization': `Bearer ${authState.token}` }
             });
             return response.json();
@@ -21,12 +21,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
 
     useFocusEffect(
         useCallback(() => {
-            console.log('focused');
             refetch();
 
-            return () => {
-                console.log('unfocused');
-            };
+            return () => { };
         }, [])
     );
 
@@ -38,14 +35,16 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                     <Text className='text-3xl font-semibold pt-12'>Programme</Text>
                     {isLoading && <Text className='text-gray-500 text-xs'>Chargement...</Text>}
                     {!isLoading && <>
-                        {data && data.length > 0 ?
-                            <>
-                                {data.map((program: any) => (
-                                    <Text key={program.id} className='text-primary'>{program.name as string}</Text>
-                                ))}
-                            </> : <>
-                                <Text className='text-gray-500 text-xs'>Vous n'avez pas encore ajouté de programme</Text>
-                            </>
+                        {data ? <>
+                            <Text className='text-gray-500'>Dernier programme ajouté : </Text>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate(Routes.PROGRAM_SCREEN, { program: data })}
+                                className='border-2 border-gray-300 p-4 rounded-lg mt-4'>
+                                <Text>{data.name}</Text>
+                            </TouchableOpacity>
+                        </> : <>
+                            <Text className='text-gray-500 text-xs'>Vous n'avez pas encore ajouté de programme</Text>
+                        </>
                         }
                         <TouchableOpacity
                             onPress={() => navigation.navigate(Routes.ADD_PROGRAM_SCREEN)}

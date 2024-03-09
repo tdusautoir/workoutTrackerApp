@@ -12,8 +12,9 @@ import tailwindConfig from '../../tailwind.config.js';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { useAuth } from '@/context/AuthContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ProgramScreen from '@/screens/ProgramScreen';
+import ProgramsScreen from '@/screens/ProgramsScreen';
 import AddProgramScreen from '@/screens/AddProgramScreen';
+import ProgramScreen from '@/screens/ProgramScreen';
 
 const { theme } = resolveConfig(tailwindConfig) as TwTheme;
 
@@ -39,6 +40,7 @@ function HomeStackScreen() {
             headerShown: false,
         }}>
             <HomeStack.Screen name={"Default"} component={HomeScreen} />
+            <HomeStack.Screen name={Routes.PROGRAM_SCREEN} component={ProgramScreen} />
             <HomeStack.Group screenOptions={{ presentation: 'modal' }}>
                 <HomeStack.Screen name={Routes.ADD_PROGRAM_SCREEN} component={AddProgramScreen} />
             </HomeStack.Group>
@@ -63,7 +65,7 @@ export default function RootNavigator() {
                         return <LayoutIcon stroke={color} />
                     }
 
-                    if (route.name === Routes.PROGRAM_SCREEN) {
+                    if (route.name === Routes.PROGRAMS_SCREEN) {
                         return <DumbellIcon stroke={color} />
                     }
 
@@ -73,7 +75,7 @@ export default function RootNavigator() {
             })}>
                 <Tab.Group>
                     <Tab.Screen name={Routes.HOME_SCREEN} component={HomeStackScreen} />
-                    <Tab.Screen name={Routes.PROGRAM_SCREEN} component={ProgramScreen} />
+                    <Tab.Screen name={Routes.PROGRAMS_SCREEN} component={ProgramsScreen} />
                     <Tab.Screen name="Logout" component={LogoutComponent} options={{
                         tabBarButton: (props) => (<LogoutComponent {...props} />),
                     }} />
