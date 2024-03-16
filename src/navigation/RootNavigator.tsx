@@ -17,6 +17,8 @@ import AddProgramScreen from '@/screens/AddProgramScreen';
 import ProgramScreen from '@/screens/ProgramScreen';
 import ExercisesScreen from '@/screens/ExercisesScreen';
 import LaunchProgramscreen from '@/screens/LaunchProgramScreen';
+import WorkoutScreen from '@/screens/WorkoutScreen';
+import AddExerciseScreen from '@/screens/AddExerciseScreen';
 
 const { theme } = resolveConfig(tailwindConfig) as TwTheme;
 
@@ -44,7 +46,9 @@ function HomeStackScreen() {
             <HomeStack.Screen name={"Default"} component={HomeScreen} />
             <HomeStack.Screen name={Routes.PROGRAM_SCREEN} component={ProgramScreen} />
             <HomeStack.Screen name={Routes.EXERCISES_SCREEN} component={ExercisesScreen} />
+            <HomeStack.Screen name={Routes.WORKOUT_SCREEN} component={WorkoutScreen} />
             <HomeStack.Group screenOptions={{ presentation: 'modal' }}>
+                <HomeStack.Screen name={Routes.ADD_EXERCISE_SCREEN} component={AddExerciseScreen} />
                 <HomeStack.Screen name={Routes.ADD_PROGRAM_SCREEN} component={AddProgramScreen} />
             </HomeStack.Group>
         </HomeStack.Navigator>

@@ -7,4 +7,6 @@ export const Routes = {
     ADD_PROGRAM_SCREEN: "AddProgram",
     LAUNCH_PROGRAM_SCREEN: "LaunchProgram",
     EXERCISES_SCREEN: "Exercises",
+    ADD_EXERCISE_SCREEN: "AddExercise",
+    WORKOUT_SCREEN: "Workout",
 }
