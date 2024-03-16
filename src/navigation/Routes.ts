@@ -5,4 +5,6 @@ export const Routes = {
     PROGRAM_SCREEN: "Program",
     PROGRAMS_SCREEN: "Programs",
     ADD_PROGRAM_SCREEN: "AddProgram",
+    LAUNCH_PROGRAM_SCREEN: "LaunchProgram",
+    EXERCISES_SCREEN: "Exercises",
 }

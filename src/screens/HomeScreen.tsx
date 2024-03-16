@@ -32,7 +32,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
             <View className='p-12'>
                 <Text className='text-2xl'>Bonjour, <Text className='text-xl'>{authState.user.email}</Text></Text>
                 <View>
-                    <Text className='text-3xl font-semibold pt-12'>Programme</Text>
+                    <Text className='text-3xl font-semibold pt-12'>Programmes</Text>
                     {isLoading && <Text className='text-gray-500 text-xs'>Chargement...</Text>}
                     {!isLoading && <>
                         {data ? <>
@@ -52,6 +52,14 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                             <Text className='text-primary'>Ajouter un programme</Text>
                         </TouchableOpacity>
                     </>}
+                </View>
+                <View>
+                    <Text className='text-3xl font-semibold pt-12'>Exercises</Text>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate(Routes.EXERCISES_SCREEN)}
+                        className='bg-secondary p-4 rounded-lg mt-4'>
+                        <Text className='text-primary'>Voir tout les exercises</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>

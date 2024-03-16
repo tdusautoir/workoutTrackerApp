@@ -51,6 +51,7 @@ export default function ProgramScreen({ navigation, route }: Props) {
                     <Text>Retour</Text>
                 </TouchableOpacity>
                 <Text className='text-2xl'>{data?.name}</Text>
+                {data?.WorkoutOnProgram.length === 0 && <Text>Aucune séance</Text>}
                 {data?.WorkoutOnProgram.map((workout) => (
                     <View key={workout.id} className='border-2 border-gray-300 p-4 rounded-lg mt-4'>
                         <Text>{workout.workout.name}</Text>

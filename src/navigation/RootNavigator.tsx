@@ -15,6 +15,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ProgramsScreen from '@/screens/ProgramsScreen';
 import AddProgramScreen from '@/screens/AddProgramScreen';
 import ProgramScreen from '@/screens/ProgramScreen';
+import ExercisesScreen from '@/screens/ExercisesScreen';
+import LaunchProgramscreen from '@/screens/LaunchProgramScreen';
 
 const { theme } = resolveConfig(tailwindConfig) as TwTheme;
 
@@ -41,12 +43,28 @@ function HomeStackScreen() {
         }}>
             <HomeStack.Screen name={"Default"} component={HomeScreen} />
             <HomeStack.Screen name={Routes.PROGRAM_SCREEN} component={ProgramScreen} />
+            <HomeStack.Screen name={Routes.EXERCISES_SCREEN} component={ExercisesScreen} />
             <HomeStack.Group screenOptions={{ presentation: 'modal' }}>
                 <HomeStack.Screen name={Routes.ADD_PROGRAM_SCREEN} component={AddProgramScreen} />
             </HomeStack.Group>
         </HomeStack.Navigator>
     );
 }
+
+
+const ProgramStack = createNativeStackNavigator();
+
+function ProgramStackScreen() {
+    return (
+        <ProgramStack.Navigator screenOptions={{
+            headerShown: false,
+        }}>
+            <ProgramStack.Screen name={"default"} component={ProgramsScreen} />
+            <ProgramStack.Screen name={Routes.LAUNCH_PROGRAM_SCREEN} component={LaunchProgramscreen} />
+        </ProgramStack.Navigator>
+    );
+}
+
 export default function RootNavigator() {
     const Tab = createBottomTabNavigator();
 
@@ -75,7 +93,7 @@ export default function RootNavigator() {
             })}>
                 <Tab.Group>
                     <Tab.Screen name={Routes.HOME_SCREEN} component={HomeStackScreen} />
-                    <Tab.Screen name={Routes.PROGRAMS_SCREEN} component={ProgramsScreen} />
+                    <Tab.Screen name={Routes.PROGRAMS_SCREEN} component={ProgramStackScreen} />
                     <Tab.Screen name="Logout" component={LogoutComponent} options={{
                         tabBarButton: (props) => (<LogoutComponent {...props} />),
                     }} />

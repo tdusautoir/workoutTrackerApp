@@ -29,8 +29,8 @@ export default function AddProgramScreen({ navigation }: { navigation: any }) {
         const result = await res.json();
 
         if (res.status !== 200) {
-            if (result && result.error) {
-                alert(result.msg);
+            if (result && result.message) {
+                alert(result.message);
             } else {
                 alert('Erreur lors de l\'ajout du programme');
             }
