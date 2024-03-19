@@ -32,13 +32,23 @@ export default function ProgramsScreen({ navigation }: { navigation: any }) {
         }, [])
     );
 
+    if (isLoading) {
+        return (
+            <SafeAreaView>
+                <View className='p-12'>
+                    <Text className='text-2xl'>Lancer un programme</Text>
+                    <Text className='text-gray-500 text-xs'>Chargement...</Text>
+                </View>
+            </SafeAreaView>
+        );
+    }
+
     return (
         <SafeAreaView>
             <View className='p-12'>
                 <Text className='text-2xl'>Lancer un programme</Text>
-                {isLoading && <Text className='text-gray-500 text-xs'>Chargement...</Text>}
-                {!isLoading && data.length < 1 && <Text className='text-gray-500 text-xs'>Vous n'avez pas encore ajouté de programme</Text>}
-                {(!isLoading && data.length > 0) &&
+                {data && data.length < 1 && <Text className='text-gray-500 text-xs'>Vous n'avez pas encore ajouté de programme</Text>}
+                {(data && data.length > 0) &&
                     <View className='mb-[100px]'>
                         <FlatList
                             data={data as Data}

@@ -15,6 +15,11 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
             const response = await fetch(url + '/program/last', {
                 headers: { 'Authorization': `Bearer ${authState.token}` }
             });
+
+            if (!response.ok && response.status === 404) {
+                return null;
+            }
+
             return response.json();
         }
     })

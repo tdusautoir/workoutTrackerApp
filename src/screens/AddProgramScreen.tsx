@@ -1,4 +1,3 @@
-import InputPassword from '@/components/InputPassword/InputPassword';
 import { useAuth } from '@/context/AuthContext';
 import { useState } from 'react';
 import { View, Text, TouchableOpacity, KeyboardAvoidingView, TextInput, Platform } from 'react-native';
@@ -48,7 +47,7 @@ export default function AddProgramScreen({ navigation }: { navigation: any }) {
 
 
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
+        <KeyboardAvoidingView behavior={"position"}>
             <View className='p-12 gap-4'>
                 <Text className='text-4xl font-bold'>Ajouter un programme</Text>
                 <View className='gap-y-2'>
