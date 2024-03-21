@@ -83,6 +83,10 @@ Quelques screenhots de mon application :
 <img src="./screenshots/IMG_6236.PNG" alt="Texte alternatif" style="width: 200px;"/>
 <img src="./screenshots/IMG_6238.PNG" alt="Texte alternatif" style="width: 200px;"/>
 
+### GIF 
+
+![Texte alternatif](./screenshots/gif.gif)
+
 ## Contribution 
 
 Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet, veuillez suivre ces étapes :
