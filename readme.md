@@ -77,11 +77,11 @@ npm run start
 
 Quelques screenhots de mon application : 
 
-<img src="./screenshots/IMG_6233.PNG" alt="Texte alternatif" style="width: 200px;"/>
-<img src="./screenshots/IMG_6234.PNG" alt="Texte alternatif" style="width: 200px;"/>
-<img src="./screenshots/IMG_6235.PNG" alt="Texte alternatif" style="width: 200px;"/>
-<img src="./screenshots/IMG_6236.PNG" alt="Texte alternatif" style="width: 200px;"/>
-<img src="./screenshots/IMG_6238.PNG" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6233.png" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6234.png" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6235.png" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6236.png" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6238.png" alt="Texte alternatif" style="width: 200px;"/>
 
 ### GIF 
 
