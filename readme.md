@@ -2,12 +2,9 @@
 
 WorkoutTracker est une application mobile développée en React Native conçue pour aider les utilisateurs à suivre et à enregistrer leurs séances d'entraînement en musculation.
 
-## Fonctionnalités
-- Authentification utilisateur : Les utilisateurs peuvent se connecter pour accéder à leurs programmes personnalisés.
-- Gestion des programmes : Les utilisateurs peuvent créer, modifier et supprimer leurs programmes d'entraînement.
-- Gestion des séances : Les utilisateurs peuvent voir les séances de leur programme, les éditer et enregistrer les détails de leur entraînement.
-- Gestion des exercices : Les utilisateurs peuvent consulter et modifier les exercices de chaque séance, enregistrer les poids, les répétitions et d'autres détails.
-- Suivi de la progression : Une fonctionnalité permet aux utilisateurs de visualiser leur progression au fil du temps.
+## API Utilisé 
+
+Mon api développé sur mesure pour cette appli, le lien : https://workout-tracker-api-thibaut-dusautoirs-projects.vercel.app
 
 ## Installation
 
@@ -29,22 +26,66 @@ cd workout-tracker
 npm install
 ```
 
+4. Remplir son .env via les variables inscrites dans le .env.example
+
+```env
+EXPO_PUBLIC_API_URL="https://workout-tracker-api-thibaut-dusautoirs-projects.vercel.app"
+```
+
 ## Utilisation
 
-1. Lancez l'application sur votre émulateur ou appareil mobile :
+1. Lancez l'application et choisissez votre émulateur :
+
+IOS :
 
 ```bash
-npx react-native run-android
+npm run ios
 ```
 
-ou 
+Android : 
 
 ```bash
-npx react-native run-ios
+npm run android
 ```
 
-1. Connectez-vous à votre compte ou créez un nouveau compte si vous n'en avez pas encore.
-2. Explorez les différentes fonctionnalités de l'application, créez vos programmes d'entraînement, enregistrez vos séances et suivez votre progression.
+Web : 
+
+```bash
+npm run web
+```
+
+Ou choisissez ensuite : 
+
+```bash
+npm run start
+```
+
+2. Connectez-vous à votre compte ou créez un nouveau compte si vous n'en avez pas encore.
+3. Explorez les différentes fonctionnalités de l'application, créez vos programmes d'entraînement, enregistrez vos séances et vos exercises.
+
+## Fonctionnalités
+- [x] Authentification utilisateur : Les utilisateurs peuvent se connecter et s'enregistrer pour accéder à l'interface. 
+- [x] Gestion des programmes : Les utilisateurs peuvent créer leurs programmes.
+- [x] Gestion des séances : Les utilisateurs peuvent voir les séances de leur programme.
+- [x] Gestion des exercices : Les utilisateurs peuvent consulter et ajouter des exercices à chaque séance.
+- [ ] Gestion des programmes (avancée) : Les utilisateurs peuvent modifier et supprimer leurs programmes d'entraînement.
+- [ ] Gestion des séances (avancée) : Les utilisateurs peuvent éditer et enregistrer les détails de leur entraînement. 
+- [ ] Gestion des exercices (avancée) : Les utilisateurs peuvent modifier les exercices de chaque séance, enregistrer les poids, les répétitions et d'autres détails.
+- [ ] Suivi de la progression (avancée) : Une fonctionnalité permet aux utilisateurs de visualiser leur progression au fil du temps.
+
+## Screenshots
+
+Quelques screenhots de mon application : 
+
+<img src="./screenshots/IMG_6233.png" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6234.png" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6235.png" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6236.png" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/IMG_6238.png" alt="Texte alternatif" style="width: 200px;"/>
+
+### GIF 
+
+![Texte alternatif](./screenshots/gif.gif)
 
 ## Contribution 
 
