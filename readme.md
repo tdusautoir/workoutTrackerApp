@@ -95,7 +95,7 @@ IOS :
 
 android : 
 
-<img src="./screenshots/qr-code-android" alt="Texte alternatif" style="width: 200px;"/>
+<img src="./screenshots/qr-code-android.png" alt="Texte alternatif" style="width: 200px;"/>
 
 ## Contribution 
 
