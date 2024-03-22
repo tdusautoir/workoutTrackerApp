@@ -87,6 +87,16 @@ Quelques screenhots de mon application :
 
 ![Texte alternatif](./screenshots/gif.gif)
 
+### QR codes
+
+IOS : 
+
+<img src="./screenshots/qr-code-ios.png" alt="Texte alternatif" style="width: 200px;"/>
+
+android : 
+
+<img src="./screenshots/qr-code-android" alt="Texte alternatif" style="width: 200px;"/>
+
 ## Contribution 
 
 Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet, veuillez suivre ces étapes :
